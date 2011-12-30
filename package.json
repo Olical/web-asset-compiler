@@ -9,5 +9,8 @@
 	},
 	"main": "wac",
 	"dependencies": {},
-	"devDependencies": {}
+	"devDependencies": {},
+	"bin": {
+		"wac": "./wac-binary.js"
+	},
 }
