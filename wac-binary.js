@@ -10,6 +10,8 @@ var logme = require('logme');
 program
 	.version('0.0.0')
 	.option('-l, --fileList [path]', 'Specify a diffent file list to the default assets.json')
+	.option('-o, --output [path]', 'File that the compiled assest should be saved to')
+	.option('-v, --verbose', 'Causes the program to display errors and other useful pieces information')
 	.parse(process.argv);
 
 // Initialise the required global variables
