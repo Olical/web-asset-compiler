@@ -43,7 +43,7 @@ function parseFile(path, target, callback) {
 
 // Load the file list
 fs.readFile(fileListPath, 'utf8', function(err, data) {
-	if(err) {
+	if(err && program.verbose) {
 		logme.error('The file list (' + fileListPath + ') could not be read.');
 	}
 	else {
@@ -57,7 +57,7 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 			for(var i = 0; i < fileList.length; i += 1) {
 				fileObjects.push({});
 				parseFile(fileList[i], fileObjects[i], function(path, err) {
-					if(err) {
+					if(err && program.verbose) {
 						logme.error('The asset (' + path + ') could not be read.');
 					}
 					
@@ -72,7 +72,9 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 			}
 		}
 		catch(e) {
-			logme.error('The file list (' + fileListPath + ') is not valid JSON.');
+			if(program.verbose) {
+				logme.error('The file list (' + fileListPath + ') is not valid JSON.');
+			}
 		}
 	}
 });
