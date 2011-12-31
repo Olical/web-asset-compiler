@@ -48,11 +48,19 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 		logme.error('The file list (' + fileListPath + ') could not be read.');
 	}
 	else {
+		if(program.verbose) {
+			logme.info('File list loaded successfully (' + fileListPath + ').');
+		}
+		
 		// Decode the data
 		try {
 			var fileList = JSON.parse(data);
 			var fileObjects = [];
 			var doneCount = 0;
+			
+			if(program.verbose) {
+				logme.info('File list JSON decoded successfully (' + fileListPath + ').');
+			}
 			
 			// Convert the paths to objects
 			for(var i = 0; i < fileList.length; i += 1) {
@@ -60,6 +68,9 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 				parseFile(fileList[i], fileObjects[i], function(path, err) {
 					if(err && program.verbose) {
 						logme.error('The asset (' + path + ') could not be read.');
+					}
+					else if(!err && program.verbose) {
+						logme.info('Asset loaded successfully (' + path + ').');
 					}
 					
 					// Increment the done count
@@ -70,11 +81,18 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 						// So now we can compile the assets
 						var result = wac.compile(fileObjects);
 						
+						if(program.verbose) {
+							logme.info('Assets compiled.');
+						}
+						
 						// If there is an output target then write to it, if not fire it back to the console
 						if(program.output) {
 							fs.writeFile(program.output, result, 'utf8', function(err) {
 								if(err && program.verbose) {
 									logme.error('Could not write results to output file (' + program.output + ').');
+								}
+								else if(!err && program.verbose) {
+									logme.info('Compiled assets written to output file (' + program.output + ').');
 								}
 							});
 						}
