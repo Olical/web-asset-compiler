@@ -9,7 +9,7 @@
 	},
 	"main": "wac",
 	"dependencies": {
-		"arguments"
+		"commander"
 	},
 	"devDependencies": {},
 	"bin": {
