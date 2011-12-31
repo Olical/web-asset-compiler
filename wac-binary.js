@@ -5,6 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var program = require('commander');
 var logme = require('logme');
+var wac = require('wac');
 
 // Set up commander
 program
@@ -66,6 +67,7 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 					
 					// If it is one above the length of files then all are done
 					if(doneCount >= fileList.length) {
+						// So now we can compile the assets
 						
 					}
 				});
