@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var program = require('commander');
 var logme = require('logme');
-var wac = require('wac');
+var wac = require('./wac');
 
 // Set up commander
 program
