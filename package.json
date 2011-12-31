@@ -9,8 +9,8 @@
 	},
 	"main": "wac",
 	"dependencies": {
-		"commander",
-		"logme"
+		"commander": "0.5.1",
+		"logme": "0.3.2"
 	},
 	"devDependencies": {},
 	"bin": {
