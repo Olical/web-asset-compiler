@@ -10,7 +10,9 @@
 	"main": "wac",
 	"dependencies": {
 		"commander": "0.5.1",
-		"logme": "0.3.2"
+		"logme": "0.3.2",
+		"clean-css": "0.3.1",
+		"uglify-js": "1.2.3"
 	},
 	"devDependencies": {},
 	"bin": {

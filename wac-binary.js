@@ -34,7 +34,7 @@ function parseFile(path, target, callback) {
 			target.content = data;
 			
 			// Calculate the type
-			target.type = /(?:\.([^.]+))?$/.exec(path)[1];
+			target.type = /(?:\.([^.]+))?$/.exec(path)[1].toLowerCase();
 		}
 		
 		// Run the callback
