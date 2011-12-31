@@ -10,9 +10,9 @@ var wac = require('wac');
 // Set up commander
 program
 	.version('0.0.0')
-	.option('-l, --fileList [path]', 'Specify a diffent file list to the default assets.json')
-	.option('-o, --output [path]', 'File that the compiled assest should be saved to')
-	.option('-v, --verbose', 'Causes the program to display errors and other useful pieces information')
+	.option('-l, --fileList [path]', 'Specify a diffent file list to the default assets.json.')
+	.option('-o, --output [path]', 'File that the compiled assest should be saved to rather than being shown in the console.')
+	.option('-v, --verbose', 'Causes the program to display errors and other useful pieces information.')
 	.parse(process.argv);
 
 // Initialise the required global variables
@@ -68,7 +68,19 @@ fs.readFile(fileListPath, 'utf8', function(err, data) {
 					// If it is one above the length of files then all are done
 					if(doneCount >= fileList.length) {
 						// So now we can compile the assets
+						var result = wac.compile(fileObjects);
 						
+						// If there is an output target then write to it, if not fire it back to the console
+						if(program.output) {
+							fs.writeFile(program.output, result, 'utf8', function(err) {
+								if(err && program.verbose) {
+									logme.error('Could not write results to output file (' + program.output + ').');
+								}
+							});
+						}
+						else {
+							console.log(result);
+						}
 					}
 				});
 			}
