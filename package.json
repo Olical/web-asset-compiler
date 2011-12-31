@@ -8,7 +8,9 @@
 		"url": "git://github.com/Wolfy87/web-asset-compiler.git"
 	},
 	"main": "wac",
-	"dependencies": {},
+	"dependencies": {
+		"arguments"
+	},
 	"devDependencies": {},
 	"bin": {
 		"wac": "./wac-binary.js"
