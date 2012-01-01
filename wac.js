@@ -20,8 +20,6 @@ exports.compile = function(files) {
 	for(var i = 0; i < files.length; i += 1) {
 		file = files[i];
 		
-		// Preprocess the file if required
-		
 		// Add the files contents to the right string
 		if(file.type === 'css') {
 			css += file.content;
