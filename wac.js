@@ -1,7 +1,8 @@
 // Load the required modules
 var cleanCSS = require('clean-css');
-var jsp = require("uglify-js").parser;
-var pro = require("uglify-js").uglify;
+var jsp = require('uglify-js').parser;
+var pro = require('uglify-js').uglify;
+var fs = require('fs');
 
 /**
  * Compiles multiple CSS and JavaScript files into one JavaScript file
@@ -12,7 +13,7 @@ var pro = require("uglify-js").uglify;
 exports.compile = function(files) {
 	// Initialise required variables
 	var file = null;
-	var js = '';
+	var js = fs.readFileSync(__dirname + '/stylesheet-loader.js', 'utf8');
 	var css = '';
 	
 	// Loop over the files
@@ -30,10 +31,18 @@ exports.compile = function(files) {
 		}
 	}
 	
-	// Return the compiled assets
+	// Compile JavaScript
 	var ast = jsp.parse(js); // parse code and get the initial AST
 	ast = pro.ast_mangle(ast); // get a new AST with mangled names
 	ast = pro.ast_squeeze(ast); // get an AST with compression optimizations
+	var jsResult = pro.gen_code(ast);
 	
-	return cleanCSS.process(css) + pro.gen_code(ast);
+	// Compile CSS
+	var cssResult = escape(cleanCSS.process(css));
+	
+	// Drop the CSS into the JavaScript
+	jsResult = jsResult.replace('${CSS}', cssResult);
+	
+	// Return the compiled JavaScript
+	return jsResult;
 };
