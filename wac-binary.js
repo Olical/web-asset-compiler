@@ -49,6 +49,10 @@ function parseFile(path, target, callback) {
 					// It was all good, store the css and change the type
 					target.content = css;
 					target.type = 'css';
+					
+					if(program.verbose) {
+						logme.info('LESS file converted to CSS successfully (' + path + ').');
+					}
 				}
 				
 				// Run the callback
