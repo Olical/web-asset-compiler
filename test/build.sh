@@ -1,0 +1,1 @@
+../wac-binary.js -v -o ./assets/javascript/assets.min.js
