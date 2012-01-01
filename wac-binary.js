@@ -6,6 +6,7 @@ var path = require('path');
 var program = require('commander');
 var logme = require('logme');
 var wac = require('./wac');
+var less = require('less');
 
 // Set up commander
 program
@@ -37,8 +38,27 @@ function parseFile(path, target, callback) {
 			target.type = /(?:\.([^.]+))?$/.exec(path)[1].toLowerCase();
 		}
 		
-		// Run the callback
-		callback.call(null, path, err);
+		if(!err && target.type === 'less') {
+			// It is less, we must compile it
+			less.render(target.content, function(err, css) {
+				if(err && program.verbose) {
+					// Show the error
+					logme.error('Conversion from LESS to CSS failed (' + path + ').');
+				}
+				else {
+					// It was all good, store the css and change the type
+					target.content = css;
+					target.type = 'css';
+				}
+				
+				// Run the callback
+				callback.call(null, path, err);
+			});
+		}
+		else {
+			// Run the callback
+			callback.call(null, path, err);
+		}
 	});
 }
 
