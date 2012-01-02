@@ -43,7 +43,7 @@ function parseFile(path, target, callback) {
 			less.render(target.content, function(err, css) {
 				if(err && program.verbose) {
 					// Show the error
-					logme.error('Conversion from LESS to CSS failed (' + path + ').');
+					logme.error('Conversion from LESS to CSS failed (' + path + '): ' + err.message + '.');
 				}
 				else {
 					// It was all good, store the css and change the type
