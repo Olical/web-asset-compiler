@@ -11,13 +11,13 @@ var less = require('less');
 // Set up commander
 program
 	.version('0.0.0')
-	.option('-l, --fileList [path]', 'Specify a diffent file list to the default assets.json.')
+	.option('-c, --config [path]', 'Specify a diffent config file to the default assets.json.')
 	.option('-o, --output [path]', 'File that the compiled assest should be saved to rather than being shown in the console.')
 	.option('-v, --verbose', 'Causes the program to display errors and other useful pieces information.')
 	.parse(process.argv);
 
 // Initialise the required global variables
-var fileListPath = program.fileList || './assets.json';
+var fileListPath = program.config || './assets.json';
 
 /**
  * Parses a files name and contents and drops the results into the specified object
