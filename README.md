@@ -1,6 +1,6 @@
 # Web asset compiler (wac)
 
-Combines and minifys your CSS, LESS and JavaScript into one JavaScript file.
+Combines and minifies your CSS, LESS and JavaScript into one JavaScript file.
 
 # Installation
 
@@ -37,7 +37,7 @@ If something does not appear to be working correctly you can pass the `--verbose
 
 # Using your compiled assets
 
-This is just a case of including the script. You can place it at the bottom of the body tag or in the head, it is entirely down to your preference. I reccomend placing it in the head though so that your browser has the styles the whole time that the page is loading.
+This is just a case of including the script. You can place it at the bottom of the body tag or in the head, it is entirely down to your preference. I recommend placing it in the head though so that your browser has the styles the whole time that the page is loading.
 
 No matter where you place it the styles will always be injected into the head tag.
 
