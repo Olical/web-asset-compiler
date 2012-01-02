@@ -35,6 +35,12 @@ If something does not appear to be working correctly you can pass the `--verbose
 
 	wac -v -c ./my-config.json -o ./assets/javascript/assets.min.js
 
+# Using your compiled assets
+
+This is just a case of including the script. You can place it at the bottom of the body tag or in the head, it is entirely down to your preference. I reccomend placing it in the head though so that your browser has the styles the whole time that the page is loading.
+
+No matter where you place it the styles will always be injected into the head tag.
+
 # Author
 
 Written by [Oliver Caldwell](http://olivercaldwell.co.uk).
