@@ -1,6 +1,6 @@
-(function() {
-	var style = document.createElement('style'),
-		rules = document.createTextNode(unescape('${CSS}'));
+(function(doc) {
+	var style = doc.createElement('style'),
+		rules = doc.createTextNode(unescape('${CSS}'));
 	
 	style.type = 'text/css';
 	
@@ -11,5 +11,5 @@
 		style.appendChild(rules);
 	}
 	
-	document.getElementsByTagName('head')[0].appendChild(style);
-}());
+	doc.getElementsByTagName('head')[0].appendChild(style);
+}(document));
