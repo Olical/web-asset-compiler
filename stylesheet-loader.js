@@ -1,6 +1,6 @@
 (function(doc) {
 	var style = doc.createElement('style'),
-		rules = doc.createTextNode(unescape('${CSS}'));
+		rules = doc.createTextNode('${CSS}'.replace(/\\"/g, '"'));
 	
 	style.type = 'text/css';
 	

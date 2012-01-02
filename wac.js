@@ -36,7 +36,7 @@ exports.compile = function(files) {
 	var jsResult = pro.gen_code(ast);
 	
 	// Compile CSS
-	var cssResult = escape(cleanCSS.process(css));
+	var cssResult = cleanCSS.process(css).replace(/\"/g, '\\"');
 	
 	// Drop the CSS into the JavaScript
 	jsResult = jsResult.replace('${CSS}', cssResult);

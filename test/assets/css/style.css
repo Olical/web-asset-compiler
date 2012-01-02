@@ -3,3 +3,11 @@ p {
 	margin: 10px;
 	border: 1px solid #000000;
 }
+
+p:before {
+	content: '{BEFORE} ';
+}
+
+p:after {
+	content: " {AFTER}";
+}
