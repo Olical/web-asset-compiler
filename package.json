@@ -1,7 +1,7 @@
 {
 	"author": "Oliver Caldwell <olliec87@gmail.com> (http://olivercaldwell.co.uk)",
 	"name": "web-asset-compiler",
-	"description": "Combines and compresses CSS, LESS and JavaScript into one file",
+	"description": "Combines and minifies your CSS, LESS and JavaScript into one JavaScript file",
 	"version": "0.0.0",
 	"repository": {
 		"type": "git",
